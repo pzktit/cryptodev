@@ -5,7 +5,8 @@ on:
     tags: ["b*.*.*", "v*"]
     branches: ["release"]
   workflow_dispatch:
-
+  schedule:
+    - cron: "0 0 21 * *"
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
