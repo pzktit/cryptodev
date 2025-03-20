@@ -1,14 +1,19 @@
 {
   "name": "CryptoDev",
-  "dockerFile": "../../Dockerfile",
-  "context": "..",
-  "settings": {
-    "python.pythonPath": "/usr/local/bin/python"
+  "image": "ghcr.io/pzktit/cryptodev:latest", // Specify a tag for the image
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python", // Updated to the latest setting key
+        "editor.tabSize": 4,
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true
+        }
+      },
+      "extensions": ["ms-vscode.cpptools", "esbenp.prettier-vscode"]
+    }
   },
-  "extensions": [
-    "ms-python.python",
-    "ms-toolsai.jupyter"
-  ],
-  "postCreateCommand": "pip install -r requirements.txt",
+  "postCreateCommand": "pip install --no-cache-dir -r requirements.txt", // Added --no-cache-dir for efficiency
   "remoteUser": "vscode"
 }
